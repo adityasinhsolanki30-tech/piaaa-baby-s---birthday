@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Testing the Surprise ❤️</title>
+<title>2:30 PM Testing Countdown ❤️</title>
 
 <style>
     body {
@@ -102,9 +102,9 @@
 <div class="container">
 
     <div id="countdown-box">
-        <h2>Countdown Test: 2:20 PM</h2>
+        <h2>Testing for 2:30 PM...</h2>
         <div id="timer">00:00:00</div>
-        <p style="background:none; font-size: 1rem;">Testing the auto-reveal... ❤️</p>
+        <p style="background:none; font-size: 1rem;">Testing the auto-reveal logic. ❤️</p>
     </div>
 
     <div id="birthday-content" style="display: none;">
@@ -127,14 +127,15 @@
 
 <script>
 function updateCountdown() {
-    // TESTING TARGET: Today at 2:20 PM (14:20)
+    // TESTING TARGET: Today at 2:30 PM (14:30)
     const targetDate = new Date();
-    targetDate.setHours(14, 20, 0, 0); 
+    targetDate.setHours(14, 30, 0, 0); 
     
     const now = new Date().getTime();
     const diff = targetDate - now;
 
     if (diff <= 0) {
+        // Switch content when time is up
         document.getElementById("countdown-box").style.display = "none";
         document.getElementById("birthday-content").style.display = "block";
         return;
@@ -145,43 +146,4 @@ function updateCountdown() {
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
     document.getElementById("timer").innerHTML = 
-        (hours < 10 ? "0" + hours : hours) + ":" + 
-        (minutes < 10 ? "0" + minutes : minutes) + ":" + 
-        (seconds < 10 ? "0" + seconds : seconds);
-}
-
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-function startCelebration() {
-    let music = document.getElementById("bgm");
-    if (music) {
-        music.play().catch(() => {
-            alert("Tap to play music 🎵");
-        });
-    }
-    createSparkles();
-}
-
-function createSparkles() {
-    for (let i = 0; i < 100; i++) {
-        let s = document.createElement("div");
-        s.style.position = "fixed";
-        s.style.width = "8px";
-        s.style.height = "8px";
-        s.style.background = "white";
-        s.style.borderRadius = "50%";
-        s.style.left = Math.random() * 100 + "vw";
-        s.style.top = Math.random() * 100 + "vh";
-        s.style.boxShadow = "0 0 10px white";
-        s.style.zIndex = "999";
-        s.style.pointerEvents = "none";
-        s.style.animation = `sparkleAnim ${Math.random() * 2 + 1}s linear forwards`;
-        document.body.appendChild(s);
-        setTimeout(() => s.remove(), 2000);
-    }
-}
-</script>
-
-</body>
-</html>
+        (hours < 10 ? "0" +

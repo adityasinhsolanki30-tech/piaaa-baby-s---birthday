@@ -158,14 +158,32 @@ function createConfetti() {
         confetti.style.animationDuration = (Math.random() * 3 + 2) + "s";
         confetti.style.backgroundColor =
             ["#ff4d6d", "#fff", "#ffd700", "#ff69b4"][Math.floor(Math.random()*4)];
+        s.style.position = "fixed";
+        s.style.width = "10px";
+        s.style.height = "10px";
+        s.style.background = "white";
+        s.style.borderRadius = "50%";
+        s.style.left = Math.random() * 100 + "vw";
+        s.style.top = Math.random() * 100 + "vh";
+        s.style.animation = "sparkleAnim 2s linear";
 
         document.body.appendChild(confetti);
+        setTimeout(() => s.remove(), 2000);
     }
 }
 </script>
     
     }
 }
+
+</body>
+    <body>
+
+<!-- your content -->
+
+<script>
+/* your JS code here */
+</script>
 
 </body>
 </html>

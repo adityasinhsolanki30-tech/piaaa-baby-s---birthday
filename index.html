@@ -121,34 +121,12 @@ function startCelebration() {
     }
 
     createSparkles();
-}
-
-function createSparkles() {
-    for (let i = 0; i < 60; i++) {
-        let s = document.createElement("div");
-
-        s.style.position = "fixed";
-        s.style.width = "10px";
-        s.style.height = "10px";
-        s.style.background = "white";
-        s.style.borderRadius = "50%";
-        s.style.left = Math.random() * 100 + "vw";
-        s.style.top = Math.random() * 100 + "vh";
-        s.style.boxShadow = "0 0 10px white";
-        s.style.animation = "sparkleAnim 2s linear";
-
-        document.body.appendChild(s);
-
-        setTimeout(() => s.remove(), 2000);
-    }
-}    
+   
     </script>
 <script> 
     @keyframes sparkleAnim {
     0% { transform: scale(0); opacity: 1; }
     100% { transform: scale(1.5) translateY(-100px); opacity: 0; }
-}
-   function createSparkles();   
 }
 }
 

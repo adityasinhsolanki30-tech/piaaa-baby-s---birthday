@@ -6,6 +6,7 @@
 <title>Happy Birthday Piaaa ❤️</title>
 
 <style>
+    /* Background Animation */
     body {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -28,8 +29,13 @@
         100% { background: #ff9a9e; }
     }
 
-    .container { padding: 40px 20px; max-width: 800px; margin: auto; }
+    .container {
+        padding: 40px 20px;
+        max-width: 800px;
+        margin: auto;
+    }
 
+    /* Photo Styling */
     .photo {
         width: 220px;
         height: 220px;
@@ -41,24 +47,35 @@
         display: block;
     }
 
+    /* Countdown Box */
     #countdown-box {
         background: rgba(255, 255, 255, 0.2);
         padding: 40px;
         border-radius: 30px;
         backdrop-filter: blur(10px);
         border: 2px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
     #timer {
-        font-size: clamp(2rem, 8vw, 4rem);
+        font-size: clamp(1.8rem, 6vw, 3.5rem);
         font-weight: bold;
         letter-spacing: 2px;
         margin: 10px 0;
     }
 
+    /* Typography */
     h1 { font-size: 2.8rem; margin-bottom: 10px; }
-    p { font-size: 1.25rem; line-height: 1.8; background: rgba(0, 0, 0, 0.1); padding: 25px; border-radius: 20px; }
+    
+    p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        background: rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        border-radius: 20px;
+    }
 
+    /* Button Styling */
     button {
         padding: 15px 35px;
         border: none;
@@ -69,8 +86,10 @@
         font-weight: bold;
         cursor: pointer;
         box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        transition: 0.3s;
+        transition: transform 0.3s ease;
     }
+
+    button:hover { transform: scale(1.1); }
 
     @keyframes sparkleAnim {
         0% { transform: scale(0); opacity: 1; }
@@ -90,21 +109,36 @@
     <div id="countdown-box">
         <h2>Counting down to your day, Piaaa...</h2>
         <div id="timer">00d 00h 00m 00s</div>
-        <p style="background:none; font-size: 1rem;">Something special is coming. ❤️</p>
+        <p style="background:none; font-size: 1rem;">Hold on, my love! Something special is coming. ❤️</p>
     </div>
 
     <div id="birthday-content" style="display: none;">
         <h1>🎉 Happy Birthday Piaaa ❤️</h1>
+
         <img src="piaaa.jpg" alt="Piaaa" class="photo">
+
         <p>
             My dearest Piaaa ❤️<br><br>
             They say life is measured in moments, and for me, the world truly began on <b>4 June 2025</b>. 
-            Just like that unforgettable day when RCB finally lifted the trophy, 
-            meeting you felt like the ultimate victory. 🏆✨<br><br>
-            You aren't just my girlfriend; you are my peace, my laughter, and my heartbeat. 💖<br><br>
-            I love you more than words can ever put into code. ❤️<br>
+            Just like that unforgettable day when RCB finally lifted the trophy and the whole world celebrated, 
+            meeting you felt like my own ultimate victory—a dream so beautiful I never wanted to wake up. 🏆✨<br><br>
+
+            You aren’t just my girlfriend; you are the peace in my chaos, the laughter on my quietest days, 
+            and the heartbeat in every single thing I do. Even with the distance between us, I feel you 
+            in every breath I take and every thought I have. You make the miles feel like nothing because 
+            you’re always right here in my heart. 💖<br><br>
+
+            Thank you for being my strength, my happiness, and my best friend. Every day with you is a 
+            blessing, but today is my favorite day because the world was graced with your soul. 
+            I promise to keep choosing you, keep cheering for you, and keep loving you more with 
+            every beat of my heart. 🌹<br><br>
+
+            I love you more than words can ever put into code, and more than any victory could ever 
+            express. You are my forever trophy, my jaan. ❤️<br><br>
+
             Happy Birthday, my beautiful love! 🎂💫
         </p>
+
         <button onclick="startCelebration()">Click for Surprise 🎁</button>
     </div>
 
@@ -112,8 +146,9 @@
 
 <script>
 function updateCountdown() {
-    // FIXED DATE LOGIC: (Year, Month Index (4=May), Day, Hour, Min, Sec)
-    // This forces it to use LOCAL time.
+    // TARGET DATE: May 1st, 2026. 
+    // Using (Year, MonthIndex, Day) ensures it uses the Local Timezone.
+    // Note: Month Index 4 is May.
     const targetDate = new Date(2026, 4, 1, 0, 0, 0).getTime();
     const now = new Date().getTime();
     const diff = targetDate - now;
@@ -124,11 +159,13 @@ function updateCountdown() {
         return;
     }
 
+    // Calculations for Days, Hours, Minutes, and Seconds
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
+    // Formatted display: 01d 09h 45m 20s
     document.getElementById("timer").innerHTML = 
         days + "d " + 
         (hours < 10 ? "0" + hours : hours) + "h " + 
@@ -141,7 +178,11 @@ updateCountdown();
 
 function startCelebration() {
     let music = document.getElementById("bgm");
-    if (music) { music.play().catch(() => { alert("Tap to play music 🎵"); }); }
+    if (music) {
+        music.play().catch(() => {
+            alert("Tap the screen to hear your song! 🎵");
+        });
+    }
     createSparkles();
 }
 
@@ -149,13 +190,17 @@ function createSparkles() {
     for (let i = 0; i < 100; i++) {
         let s = document.createElement("div");
         s.style.position = "fixed";
-        s.style.width = "8px"; s.style.height = "8px";
-        s.style.background = "white"; s.style.borderRadius = "50%";
+        s.style.width = "8px";
+        s.style.height = "8px";
+        s.style.background = "white";
+        s.style.borderRadius = "50%";
         s.style.left = Math.random() * 100 + "vw";
         s.style.top = Math.random() * 100 + "vh";
         s.style.boxShadow = "0 0 10px white";
-        s.style.zIndex = "999"; s.style.pointerEvents = "none";
+        s.style.zIndex = "999";
+        s.style.pointerEvents = "none";
         s.style.animation = `sparkleAnim ${Math.random() * 2 + 1}s linear forwards`;
+
         document.body.appendChild(s);
         setTimeout(() => s.remove(), 2000);
     }

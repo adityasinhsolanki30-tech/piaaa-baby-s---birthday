@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2:30 PM Testing Countdown ❤️</title>
+<title>Happy Birthday Piaaa ❤️</title>
 
 <style>
+    /* Background Animation */
     body {
         margin: 0;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -34,6 +35,7 @@
         margin: auto;
     }
 
+    /* Photo Styling */
     .photo {
         width: 220px;
         height: 220px;
@@ -45,6 +47,7 @@
         display: block;
     }
 
+    /* Countdown Box */
     #countdown-box {
         background: rgba(255, 255, 255, 0.2);
         padding: 40px;
@@ -61,6 +64,7 @@
         margin: 10px 0;
     }
 
+    /* Typography */
     h1 { font-size: 2.8rem; margin-bottom: 10px; }
     
     p {
@@ -71,6 +75,7 @@
         border-radius: 20px;
     }
 
+    /* Button Styling */
     button {
         padding: 15px 35px;
         border: none;
@@ -86,6 +91,7 @@
 
     button:hover { transform: scale(1.1); }
 
+    /* Animations */
     @keyframes sparkleAnim {
         0% { transform: scale(0); opacity: 1; }
         100% { transform: scale(1.5) translateY(-150px); opacity: 0; }
@@ -102,24 +108,34 @@
 <div class="container">
 
     <div id="countdown-box">
-        <h2>Testing for 2:30 PM...</h2>
+        <h2>Counting down to your special day...</h2>
         <div id="timer">00:00:00</div>
-        <p style="background:none; font-size: 1rem;">Testing the auto-reveal logic. ❤️</p>
+        <p style="background:none; font-size: 1rem;">Hold on, my love! Something special is coming. ❤️</p>
     </div>
 
     <div id="birthday-content" style="display: none;">
         <h1>🎉 Happy Birthday Piaaa ❤️</h1>
+
         <img src="piaaa.jpg" alt="Piaaa" class="photo">
+
         <p>
             My dearest Piaaa ❤️<br><br>
             They say life is measured in moments, and for me, the world truly began on <b>4 June 2025</b>. 
             Just like that unforgettable day when RCB finally lifted the trophy, 
             meeting you felt like the ultimate victory—a dream I never wanted to wake up from. 🏆✨<br><br>
+
             You aren't just my girlfriend; you are my peace in the chaos, 
-            my laughter on the quiet days, and the heartbeat in everything I do. 💖<br><br>
+            my laughter on the quiet days, and the heartbeat in everything I do. 
+            Every single day with you feels like a celebration, but today is extra special 
+            because the world was blessed with your soul. 💖<br><br>
+
+            I promise to stand by you through every season, cheering for you 
+            louder than any stadium crowd ever could. You are my forever trophy, my jaan. 🌹<br><br>
+
             I love you more than words can ever put into code. ❤️<br>
             Happy Birthday, my beautiful love! 🎂💫
         </p>
+
         <button onclick="startCelebration()">Click for Surprise 🎁</button>
     </div>
 
@@ -127,15 +143,12 @@
 
 <script>
 function updateCountdown() {
-    // TESTING TARGET: Today at 2:30 PM (14:30)
-    const targetDate = new Date();
-    targetDate.setHours(14, 30, 0, 0); 
-    
+    // TARGET DATE: May 1st
+    const targetDate = new Date("May 1, 2026 00:00:00").getTime();
     const now = new Date().getTime();
     const diff = targetDate - now;
 
     if (diff <= 0) {
-        // Switch content when time is up
         document.getElementById("countdown-box").style.display = "none";
         document.getElementById("birthday-content").style.display = "block";
         return;
@@ -146,4 +159,44 @@ function updateCountdown() {
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
     document.getElementById("timer").innerHTML = 
-        (hours < 10 ? "0" +
+        (hours < 10 ? "0" + hours : hours) + ":" + 
+        (minutes < 10 ? "0" + minutes : minutes) + ":" + 
+        (seconds < 10 ? "0" + seconds : seconds);
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+function startCelebration() {
+    let music = document.getElementById("bgm");
+    if (music) {
+        music.play().catch(() => {
+            alert("Tap the screen to hear your song! 🎵");
+        });
+    }
+    createSparkles();
+}
+
+function createSparkles() {
+    for (let i = 0; i < 100; i++) {
+        let s = document.createElement("div");
+        s.style.position = "fixed";
+        s.style.width = "8px";
+        s.style.height = "8px";
+        s.style.background = "white";
+        s.style.borderRadius = "50%";
+        s.style.left = Math.random() * 100 + "vw";
+        s.style.top = Math.random() * 100 + "vh";
+        s.style.boxShadow = "0 0 10px white";
+        s.style.zIndex = "999";
+        s.style.pointerEvents = "none";
+        s.style.animation = `sparkleAnim ${Math.random() * 2 + 1}s linear forwards`;
+
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 2000);
+    }
+}
+</script>
+
+</body>
+</html>

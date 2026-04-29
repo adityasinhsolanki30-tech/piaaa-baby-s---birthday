@@ -112,8 +112,17 @@ button:hover {
 <script>
 // Play music + confetti
 function startCelebration() {
-    document.getElementById("bgm").play();
-    createConfetti();
+    let music = document.getElementById("bgm");
+    music.play();
+}    
+    </script>
+<script> 
+    @keyframes sparkleAnim {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1.5) translateY(-50px); opacity: 0; }
+}
+   function createSparkles();   
+}
 }
 
 // Confetti Generator
@@ -131,6 +140,9 @@ function createConfetti() {
     }
 }
 </script>
+    
+    }
+}
 
 </body>
 </html>
